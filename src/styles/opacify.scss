@@ -1,4 +1,4 @@
-@use './../styles/math/opacify' as math;
+@use './math/opacify' as math;
 
 @function opacify($color, $amount) {
   @return math.opacifyOverride($color, $amount);

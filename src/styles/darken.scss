@@ -1,4 +1,4 @@
-@use './../styles/math/darken' as math;
+@use './math/darken' as math;
 
 @function darken($color, $percent) {
   @return math.darkenOverride($color, $percent);

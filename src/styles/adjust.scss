@@ -1,4 +1,4 @@
-@use './../styles/math/adjust' as math;
+@use './math/adjust' as math;
 
 @function adjust($color,
   $red: null, $green: null, $blue: null,

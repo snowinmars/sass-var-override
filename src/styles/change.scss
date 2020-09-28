@@ -1,4 +1,4 @@
-@use './../styles/math/change' as math;
+@use './math/change' as math;
 
 @function change($color,
   $red: null, $green: null, $blue: null,

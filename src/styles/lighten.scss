@@ -1,4 +1,4 @@
-@use './../styles/math/lighten' as math;
+@use './math/lighten' as math;
 
 @function lighten($color, $percent) {
   @return math.lightenOverride($color, $percent);

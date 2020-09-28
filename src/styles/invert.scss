@@ -1,4 +1,4 @@
-@use './../styles/math/invert' as math;
+@use './math/invert' as math;
 
 @function invert($color, $percent) {
   @return math.invertOverride($color, $percent);

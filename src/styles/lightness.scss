@@ -1,4 +1,4 @@
-@use './../styles/math/lightness' as math;
+@use './math/lightness' as math;
 
 @function lightness($color) {
   @return math.lightnessOverride($color);

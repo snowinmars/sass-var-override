@@ -1,4 +1,4 @@
-@use './../styles/math/scale' as math;
+@use './math/scale' as math;
 
 @function scale($color,
   $red: null, $green: null, $blue: null,
