@@ -1,0 +1,5 @@
+@use './../styles/math/mix' as math;
+
+@function mix($color1, $color2, $percent) {
+  @return math.mixOverride($color1, $color2, $percent);
+}

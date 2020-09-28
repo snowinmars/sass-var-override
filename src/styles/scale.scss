@@ -1,0 +1,11 @@
+@use './../styles/math/scale' as math;
+
+@function scale($color,
+  $red: null, $green: null, $blue: null,
+  $saturation: null, $lightness: null,
+  $alpha: null) {
+  @return math.scaleOverride($color,
+          $red, $green, $blue,
+          $saturation, $lightness,
+          $alpha);
+}

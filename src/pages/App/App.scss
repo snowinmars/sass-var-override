@@ -1,0 +1,11 @@
+.original,
+.override {
+  padding: 0.2em 0.5em;
+  margin: 0;
+}
+
+tbody {
+  td:nth-child(even) {
+    border-left: 2em solid transparent;
+  }
+} 

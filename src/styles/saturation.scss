@@ -1,0 +1,5 @@
+@use './../styles/math/saturation' as math;
+
+@function saturation($color) {
+  @return math.saturationOverride($color);
+}

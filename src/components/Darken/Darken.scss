@@ -1,0 +1,43 @@
+@import "../../styles/darken";
+
+.darken {
+  .group1 {
+    &.original {
+      background-color: darken(#4a5e8e, 20%);
+    }
+
+    &.override {
+      background-color: darken(var(--primary-color), 20%);
+    }  
+  }
+
+  .group2 {
+    &.original {
+      background-color: darken(#4a5e8e, 3%);
+    }
+
+    &.override {
+      background-color: darken(var(--primary-color), 3%);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: darken(#508e4b, 20%);
+    }
+
+    &.override {
+      background-color: darken(var(--secondary-color), 20%);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: darken(#508e4b, 3%);
+    }
+
+    &.override {
+      background-color: darken(var(--secondary-color), 3%);
+    }
+  }
+}

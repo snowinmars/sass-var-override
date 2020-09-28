@@ -1,0 +1,9 @@
+@import './helpers';
+
+@function redOverride($color) {
+  @if (not starts-with($color, 'var(--')) {
+    @return red($color);
+  }
+
+  @return toPart($color, "red");
+}

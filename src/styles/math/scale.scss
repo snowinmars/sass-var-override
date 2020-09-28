@@ -1,0 +1,96 @@
+@import './helpers';
+
+// Doesn't consume hue. Why? Because of shovel
+@function scaleOverride($color,
+  $red, $green, $blue,
+  $saturation, $lightness,
+  $alpha) {
+  @if (not starts-with($color, 'var(--')) {
+    // блять, идите нахуй, какого хуя null is not a numebr?
+    @if ($alpha) {
+      @if ($red and $green and $blue) { @return scale-color($color, $red: $red, $green: $green, $blue: $blue, $alpha: $alpha); }
+      @if ($red and $green) { @return scale-color($color, $red: $red, $green: $green, $alpha: $alpha); }
+      @if ($red and $blue) { @return scale-color($color, $red: $red, $blue: $blue, $alpha: $alpha); }
+      @if ($green and $blue) { @return scale-color($color, $green: $green, $blue: $blue, $alpha: $alpha); }
+      @if ($red) { @return scale-color($color, $red: $red, $alpha: $alpha); }
+      @if ($green) { @return scale-color($color, $green: $green, $alpha: $alpha); }
+      @if ($blue) { @return scale-color($color, $blue: $blue, $alpha: $alpha); }
+
+      @if ($saturation and $lightness) { @return scale-color($color, $saturation: $saturation, $lightness: $lightness, $alpha: $alpha); }
+      @if ($saturation) { @return scale-color($color, $saturation: $saturation, $alpha: $alpha); }
+      @if ($lightness) { @return scale-color($color, $lightness: $lightness, $alpha: $alpha); }
+    } @else {
+      @if ($red and $green and $blue) { @return scale-color($color, $red: $red, $green: $green, $blue: $blue); }
+      @if ($red and $green) { @return scale-color($color, $red: $red, $green: $green); }
+      @if ($red and $blue) { @return scale-color($color, $red: $red, $blue: $blue); }
+      @if ($green and $blue) { @return scale-color($color, $green: $green, $blue: $blue); }
+      @if ($red) { @return scale-color($color, $red: $red); }
+      @if ($green) { @return scale-color($color, $green: $green); }
+      @if ($blue) { @return scale-color($color, $blue: $blue); }
+
+      @if ($saturation and $lightness) { @return scale-color($color, $saturation: $saturation, $lightness: $lightness); }
+      @if ($saturation) { @return scale-color($color, $saturation: $saturation); }
+      @if ($lightness) { @return scale-color($color, $lightness: $lightness); }
+    }
+  }
+
+  @if ($red or $green or $blue) {
+    $oldRed:   toPart($color, "red");
+    $oldGreen: toPart($color, "green");
+    $oldBlue:  toPart($color, "blue");
+    $oldAlpha: toPart($color, "alpha");
+
+    $newRed: $oldRed;
+    $newGreen: $oldGreen;
+    $newBlue: $oldBlue;
+
+    @if ($red) {
+      $distance: calc(255 - #{$oldRed});
+      $diff: calc(#{$distance} * #{$red / 100%});
+
+      $newRed: calc(#{$oldRed} + #{$diff});
+    }
+
+    @if ($green) {
+      $distance: calc(255 - #{$oldGreen});
+      $diff: calc(#{$distance} * #{$green / 100%});
+
+      $newGreen: calc(#{$oldGreen} + #{$diff});
+    }
+
+    @if ($blue) {
+      $distance: calc(255 - #{$oldBlue});
+      $diff: calc(#{$distance} * #{$blue / 100%});
+
+      $newBlue: calc(#{$oldBlue} + #{$diff});
+    }
+
+    @return rgba($newRed, $newGreen, $newBlue, $oldAlpha);
+  }
+
+  @if ($saturation or $lightness) {
+    $oldHue:   toPart($color, "hue");
+    $oldSaturation: toPart($color, "saturation");
+    $oldLightness:  toPart($color, "lightness");
+    $oldAlpha: toPart($color, "alpha");
+
+    $newSaturation: $oldSaturation;
+    $newLightness: $oldLightness;
+
+    @if ($saturation) {
+      $distance: calc(100% - #{$oldSaturation});
+      $diff: calc(#{$distance} * #{$saturation / 100%});
+
+      $newSaturation: calc(#{$oldSaturation} + #{$diff});
+    }
+
+    @if ($lightness) {
+      $distance: calc(100% - #{$oldLightness});
+      $diff: calc(#{$distance} * #{$lightness / 100%});
+
+      $newLightness: calc(#{$oldLightness} + #{$diff});
+    }
+
+    @return hsla($oldHue, $newSaturation, $newLightness, $oldAlpha);
+  }
+}

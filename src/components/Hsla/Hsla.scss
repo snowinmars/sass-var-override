@@ -1,0 +1,46 @@
+@import "../../styles/alpha";
+@import "../../styles/hue";
+@import "../../styles/saturation";
+@import "../../styles/lightness";
+
+.hsla {
+  .group1 {
+    &.original {
+      background-color: hsla(222, 31%, 42%, 1);
+    }
+
+    &.override {
+      background-color: hsla(hue(var(--primary-color)), saturation(var(--primary-color)), lightness(var(--primary-color)), alpha(var(--primary-color)));
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: hsla(222, 31%, 42%, 0.8);
+    }
+
+    &.override {
+      background-color: hsla(hue(var(--primary-color)), saturation(var(--primary-color)), lightness(var(--primary-color)), 0.8);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: hsla(116, 31%, 43%, 1);
+    }
+
+    &.override {
+      background-color: hsla(hue(var(--secondary-color)), saturation(var(--secondary-color)), lightness(var(--secondary-color)), alpha(var(--secondary-color)));
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: hsla(116, 31%, 43%, 0.3);
+    }
+
+    &.override {
+      background-color: hsla(hue(var(--secondary-color)), saturation(var(--secondary-color)), lightness(var(--secondary-color)), 0.3);
+    }
+  }
+}

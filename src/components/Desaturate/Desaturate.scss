@@ -1,0 +1,43 @@
+@import "../../styles/desaturate";
+
+.desaturate {
+  .group1 {
+    &.original {
+      background-color: desaturate(#4a5e8e, 30);
+    }
+
+    &.override {
+      background-color: desaturate(var(--primary-color), 30);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: desaturate(#4a5e8e, 0);
+    }
+
+    &.override {
+      background-color: desaturate(var(--primary-color), 0);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: desaturate(#508e4b, 30);
+    }
+
+    &.override {
+      background-color: desaturate(var(--secondary-color), 30);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: desaturate(#508e4b, 100);
+    }
+
+    &.override {
+      background-color: desaturate(var(--secondary-color), 100);
+    }
+  }
+}

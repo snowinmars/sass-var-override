@@ -1,0 +1,16 @@
+@import './helpers';
+
+@function transparentizeOverride($color, $amount) {
+  @if (not starts-with($color, 'var(--')) {
+    @return transparentize($color, $amount);
+  }
+
+  $red:   toPart($color, "red");
+  $green: toPart($color, "green");
+  $blue:  toPart($color, "blue");
+  $alpha: toPart($color, "alpha");
+
+  $newAlpha: calc(#{$alpha} - #{$amount});
+
+  @return rgba($red, $green, $blue, $newAlpha) 
+}

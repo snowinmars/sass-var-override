@@ -1,0 +1,13 @@
+@import './helpers'; 
+
+@function desaturateOverride($color, $amount) {
+  @if (not starts-with($color, 'var(--')) {
+    @return desaturate($color, $amount);
+  }
+
+  $hue: toPart($color, "hue");
+  $saturation: toPart($color, "saturation");
+  $lightness: toPart($color, "lightness");
+
+  @return hsl($hue, calc(#{$saturation} - #{$amount}%), $lightness); // compiles fine
+}

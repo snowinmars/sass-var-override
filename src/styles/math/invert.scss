@@ -1,0 +1,23 @@
+@import './helpers';
+
+@function invertOverride($color, $percent) {
+  @if (not starts-with($color, 'var(--')) {
+    @return invert($color, $percent);
+  }
+
+  $red:   toPart($color, "red");
+  $green: toPart($color, "green");
+  $blue:  toPart($color, "blue");
+  $alpha: toPart($color, "alpha");
+
+  $invertedRed: calc(255 - #{$red});
+  $invertedGreen: calc(255 - #{$green});
+  $invertedBlue: calc(255 - #{$blue});
+
+  @debug $red $green $blue;
+  @debug $invertedRed $invertedGreen $invertedBlue;
+
+  @return _colormix($invertedRed, $invertedGreen, $invertedBlue, $alpha,
+          $red, $green, $blue, $alpha,
+          $percent);
+}

@@ -1,0 +1,17 @@
+@import './helpers';
+
+@function darkenOverride($color, $percent) {
+  @if (not starts-with($color, 'var(--')) {
+    @return darken($color, $percent);
+  }
+
+  $hue:   toPart($color, "hue");
+  $saturation: toPart($color, "saturation");
+  $lightness:  toPart($color, "lightness");
+
+  $newHue: $hue;
+  $newSaturation: $saturation;
+  $newLightness: calc(#{$lightness} - #{$percent});
+
+  @return hsl($newHue, $newSaturation, $newLightness) ;
+}

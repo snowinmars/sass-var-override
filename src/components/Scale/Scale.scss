@@ -1,0 +1,43 @@
+@import "../../styles/scale";
+
+.scale {
+  .group1 {
+    &.original {
+      background-color: scale(#4a5e8e, $red: 25%, $green: 17%, $blue: 100%);
+    }
+
+    &.override {
+      background-color: scale(var(--primary-color), $red: 25%, $green: 17%, $blue: 100%);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: scale(#508e4b, $red: 25%, $green: 17%, $blue: 100%, $alpha: -0.3%);
+    }
+
+    &.override {
+      background-color: scale(var(--secondary-color), $red: 25%, $green: 17%, $blue: 100%, $alpha: -0.3%);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: scale(#4a5e8e, $saturation: 15%, $lightness: 55%);
+    }
+
+    &.override {
+      background-color: scale(var(--primary-color), $saturation: 15%, $lightness: 55%);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: scale(#508e4b, $saturation: 15%, $lightness: -15%, $alpha: 0.7%);
+    }
+
+    &.override {
+      background-color: scale(var(--secondary-color), $saturation: 15%, $lightness: -15%, $alpha: 0.7%);
+    }
+  }
+}

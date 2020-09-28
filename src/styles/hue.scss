@@ -1,0 +1,5 @@
+@use './../styles/math/hue' as math;
+
+@function hue($color) {
+  @return math.hueOverride($color);
+}

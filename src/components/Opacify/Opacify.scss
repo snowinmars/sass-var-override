@@ -1,0 +1,43 @@
+@import "../../styles/opacify";
+
+.opacify {
+  .group1 {
+    &.original {
+      background-color: opacify(#4a5e8e, 0.2);
+    }
+
+    &.override {
+      background-color: opacify(var(--primary-color), 0.2);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: opacify(#4a5e8e, 1);
+    }
+
+    &.override {
+      background-color: opacify(var(--primary-color), 1);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: opacify(#508e4b, 0);
+    }
+
+    &.override {
+      background-color: opacify(var(--secondary-color), 0);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: opacify(#508e4b, 0.7);
+    }
+
+    &.override {
+      background-color: opacify(var(--secondary-color), 0.7);
+    }
+  }
+}

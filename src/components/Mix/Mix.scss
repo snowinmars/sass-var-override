@@ -1,0 +1,43 @@
+@import "../../styles/mix";
+
+.mix {
+  .group1 {
+    &.original {
+      background-color: mix(#4a5e8e, #508e4b, 50%);
+    }
+
+    &.override {
+      background-color: mix(var(--primary-color), var(--secondary-color), 50%);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: mix(#4a5e8e, #508e4b, 90%);
+    }
+
+    &.override {
+      background-color: mix(var(--primary-color), var(--secondary-color), 90%);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: mix(#4a5e8e, #508e4b, 10%);
+    }
+
+    &.override {
+      background-color: mix(var(--primary-color), var(--secondary-color), 10%);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: mix(#4a5e8e, #508e4b, 0%);
+    }
+
+    &.override {
+      background-color: mix(var(--primary-color), var(--secondary-color), 0%);
+    }
+  }
+}

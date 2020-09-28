@@ -1,0 +1,5 @@
+@use './../styles/math/saturate' as math;
+
+@function saturate($color, $amount) {
+  @return math.saturateOverride($color, $amount);
+}

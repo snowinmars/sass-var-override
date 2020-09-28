@@ -1,0 +1,5 @@
+@use './desaturate';
+
+@function grayscaleOverride($color) {
+  @return desaturate.desaturateOverride($color, 0);
+}

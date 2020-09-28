@@ -1,0 +1,43 @@
+@import "../../styles/invert";
+
+.invert {
+  .group1 {
+    &.original {
+      background-color: invert(#4a5e8e, 40%);
+    }
+
+    &.override {
+      background-color: invert(var(--primary-color), 40%);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: invert(#4a5e8e, 0%);
+    }
+
+    &.override {
+      background-color: invert(var(--primary-color), 0%);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: invert(#508e4b, 30%);
+    }
+
+    &.override {
+      background-color: invert(var(--secondary-color), 30%);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: invert(#508e4b, 100%);
+    }
+
+    &.override {
+      background-color: invert(var(--secondary-color), 100%);
+    }
+  }
+}

@@ -1,0 +1,39 @@
+$colors: (
+  '--primary-color': #4a5e8e,
+  '--secondary-color': #508e4b,
+);
+
+$extendedColors: ();
+
+@each $name, $value in $colors {
+  $red: red($value);
+  $green: green($value);
+  $blue: blue($value);
+  
+  $hue: hue($value)/1deg;
+  $saturation: saturation($value);
+  $lightness: lightness($value);
+  
+  $alpha: alpha($value);
+  
+  // I'd like to calc hsl/rgb in runtime, but for now I don't know how
+  $extendedColors: map-merge($extendedColors, 
+    (
+      $name: $value,
+      $name + "-hue": $hue,
+      $name + "-saturation": $saturation,
+      $name + "-lightness": $lightness,
+      $name + "-red": $red,
+      $name + "-green": $green,
+      $name + "-blue": $blue,
+      $name + "-alpha": $alpha,
+    )) ;
+}
+
+@debug $extendedColors ;
+
+:root {
+  @each $name, $value in $extendedColors {
+    #{$name}: $value 
+  }
+}

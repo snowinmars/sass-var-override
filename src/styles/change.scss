@@ -1,0 +1,11 @@
+@use './../styles/math/change' as math;
+
+@function change($color,
+  $red: null, $green: null, $blue: null,
+  $hue: null, $saturation: null, $lightness: null,
+  $alpha: null) {
+  @return math.changeOverride($color,
+    $red, $green, $blue,
+    $hue, $saturation, $lightness,
+    $alpha);
+}

@@ -1,0 +1,5 @@
+@use './../styles/math/transparentize' as math;
+
+@function transparentize($color, $amount) {
+  @return math.transparentizeOverride($color, $amount);
+}

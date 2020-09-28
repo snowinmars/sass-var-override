@@ -1,0 +1,16 @@
+@import './helpers';
+
+@function opacifyOverride($color, $amount) {
+  @if (not starts-with($color, 'var(--')) {
+    @return opacify($color, $amount);
+  }
+
+  $red:   toPart($color, "red");
+  $green: toPart($color, "green");
+  $blue:  toPart($color, "blue");
+  $alpha: toPart($color, "alpha");
+
+  $newAlpha: calc(#{$alpha} + #{$amount});
+
+  @return rgba($red, $green, $blue, $newAlpha)
+}

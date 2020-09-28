@@ -1,0 +1,21 @@
+@import './helpers';
+
+@function mixOverride($color1, $color2, $percent) {
+  @if (not starts-with($color1, 'var(--') and not starts-with($color2, 'var(--')) {
+    @return mix($color1, $color2, $percent);
+  }
+
+  $red1:   toPart($color1, "red");
+  $green1: toPart($color1, "green");
+  $blue1:  toPart($color1, "blue");
+  $alpha1: toPart($color1, "alpha");
+
+  $red2:   toPart($color2, "red");
+  $green2: toPart($color2, "green");
+  $blue2:  toPart($color2, "blue");
+  $alpha2: toPart($color2, "alpha");
+
+  @return _colormix($red1, $green1, $blue1, $alpha1,
+          $red2, $green2, $blue2, $alpha2,
+          $percent);
+}

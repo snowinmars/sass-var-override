@@ -1,0 +1,43 @@
+@import "../../styles/transparentize";
+
+.transparentize {
+  .group1 {
+    &.original {
+      background-color: transparentize(#4a5e8e, 0.2);
+    }
+
+    &.override {
+      background-color: transparentize(var(--primary-color), 0.2);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: transparentize(#4a5e8e, 0.9);
+    }
+
+    &.override {
+      background-color: transparentize(var(--primary-color), 0.9);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: transparentize(#508e4b, 0);
+    }
+
+    &.override {
+      background-color: transparentize(var(--secondary-color), 0);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: transparentize(#508e4b, 0.7);
+    }
+
+    &.override {
+      background-color: transparentize(var(--secondary-color), 0.7);
+    }
+  }
+}

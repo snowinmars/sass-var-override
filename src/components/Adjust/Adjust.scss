@@ -1,0 +1,43 @@
+@import "../../styles/adjust";
+
+.adjust {
+  .group1 {
+    &.original {
+      background-color: adjust(#4a5e8e, $red: 25, $green: 17, $blue: 230);
+    }
+
+    &.override {
+      background-color: adjust(var(--primary-color), $red: 25, $green: 17, $blue: 230);
+    }
+  }
+
+  .group2 {
+    &.original {
+      background-color: adjust(#508e4b, $red: 25, $green: 17, $blue: 230, $alpha: -0.3);
+    }
+
+    &.override {
+      background-color: adjust(var(--secondary-color), $red: 25, $green: 17, $blue: 230, $alpha: -0.3);
+    }
+  }
+
+  .group3 {
+    &.original {
+      background-color: adjust(#4a5e8e, $hue: 255, $saturation: 15%, $lightness: 15%);
+    }
+
+    &.override {
+      background-color: adjust(var(--primary-color), $hue: 255, $saturation: 15%, $lightness: 15%);
+    }
+  }
+
+  .group4 {
+    &.original {
+      background-color: adjust(#508e4b, $hue: 255, $saturation: 15%, $lightness: -15%, $alpha: 0.7);
+    }
+
+    &.override {
+      background-color: adjust(var(--secondary-color), $hue: 255, $saturation: 15%, $lightness: -15%, $alpha: 0.7);
+    }
+  }
+}

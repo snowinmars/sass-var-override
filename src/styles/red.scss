@@ -1,0 +1,5 @@
+@use './../styles/math/red' as math;
+
+@function red($color) {
+  @return math.redOverride($color);
+}

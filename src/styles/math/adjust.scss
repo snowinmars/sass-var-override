@@ -1,0 +1,81 @@
+@import './helpers';
+
+@function adjustOverride($color,
+  $red, $green, $blue,
+  $hue, $saturation, $lightness,
+  $alpha) {
+  @if (not starts-with($color, 'var(--')) {
+    // блять, идите нахуй, какого хуя null is not a numebr?
+    @if ($alpha) {
+      @if ($red and $green and $blue) { @return adjust-color($color, $red: $red, $green: $green, $blue: $blue, $alpha: $alpha); }
+      @if ($red and $green) { @return adjust-color($color, $red: $red, $green: $green, $alpha: $alpha); }
+      @if ($red and $blue) { @return adjust-color($color, $red: $red, $blue: $blue, $alpha: $alpha); }
+      @if ($green and $blue) { @return adjust-color($color, $green: $green, $blue: $blue, $alpha: $alpha); }
+      @if ($red) { @return adjust-color($color, $red: $red, $alpha: $alpha); }
+      @if ($green) { @return adjust-color($color, $green: $green, $alpha: $alpha); }
+      @if ($blue) { @return adjust-color($color, $blue: $blue, $alpha: $alpha); }
+
+      @if ($hue and $saturation and $lightness) { @return adjust-color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness, $alpha: $alpha); }
+      @if ($hue and $saturation) { @return adjust-color($color, $hue: $hue, $saturation: $saturation, $alpha: $alpha); }
+      @if ($hue and $lightness) { @return adjust-color($color, $hue: $hue, $lightness: $lightness, $alpha: $alpha); }
+      @if ($saturation and $lightness) { @return adjust-color($color, $saturation: $saturation, $lightness: $lightness, $alpha: $alpha); }
+      @if ($hue) { @return adjust-color($color, $hue: $hue, $alpha: $alpha); }
+      @if ($saturation) { @return adjust-color($color, $saturation: $saturation, $alpha: $alpha); }
+      @if ($lightness) { @return adjust-color($color, $lightness: $lightness, $alpha: $alpha); }
+    } @else {
+      @if ($red and $green and $blue) { @return adjust-color($color, $red: $red, $green: $green, $blue: $blue); }
+      @if ($red and $green) { @return adjust-color($color, $red: $red, $green: $green); }
+      @if ($red and $blue) { @return adjust-color($color, $red: $red, $blue: $blue); }
+      @if ($green and $blue) { @return adjust-color($color, $green: $green, $blue: $blue); }
+      @if ($red) { @return adjust-color($color, $red: $red); }
+      @if ($green) { @return adjust-color($color, $green: $green); }
+      @if ($blue) { @return adjust-color($color, $blue: $blue); }
+
+      @if ($hue and $saturation and $lightness) { @return adjust-color($color, $hue: $hue, $saturation: $saturation, $lightness: $lightness); }
+      @if ($hue and $saturation) { @return adjust-color($color, $hue: $hue, $saturation: $saturation); }
+      @if ($hue and $lightness) { @return adjust-color($color, $hue: $hue, $lightness: $lightness); }
+      @if ($saturation and $lightness) { @return adjust-color($color, $saturation: $saturation, $lightness: $lightness); }
+      @if ($hue) { @return adjust-color($color, $hue: $hue); }
+      @if ($saturation) { @return adjust-color($color, $saturation: $saturation); }
+      @if ($lightness) { @return adjust-color($color, $lightness: $lightness); }
+    }
+  }
+
+  @if ($red or $green or $blue) {
+    $oldRed:   toPart($color, "red");
+    $oldGreen: toPart($color, "green");
+    $oldBlue:  toPart($color, "blue");
+    $oldAlpha: toPart($color, "alpha");
+
+    $newRed: $oldRed;
+    $newGreen: $oldGreen;
+    $newBlue: $oldBlue;
+    $newAlpha: $oldAlpha;
+
+    @if ($red) { $newRed: calc(#{$oldRed} + #{$red}); }
+    @if ($green) { $newGreen: calc(#{$oldGreen} + #{$green}); }
+    @if ($blue) { $newBlue: calc(#{$oldBlue} + #{$blue}); }
+    @if ($alpha) { $newAlpha: calc(#{$oldAlpha} + #{$alpha}); }
+
+    @return rgba($newRed, $newGreen, $newBlue, $newAlpha);
+  }
+
+  @if ($hue or $saturation or $lightness) {
+    $oldHue:   toPart($color, "hue");
+    $oldSaturation: toPart($color, "saturation");
+    $oldLightness:  toPart($color, "lightness");
+    $oldAlpha: toPart($color, "alpha");
+
+    $newHue: $oldHue;
+    $newSaturation: $oldSaturation;
+    $newLightness: $oldLightness;
+    $newAlpha: $oldAlpha;
+
+    @if ($hue) { $newHue: calc(#{$oldHue} + #{$hue}); }
+    @if ($saturation) { $newSaturation: calc(#{$oldSaturation} + #{$saturation}); }
+    @if ($lightness) { $newLightness: calc(#{$oldLightness} + #{$lightness}); }
+    @if ($alpha) { $newAlpha: calc(#{$oldAlpha} + #{$alpha}); }
+
+    @return hsla($newHue, $newSaturation, $newLightness, $newAlpha);
+  }
+}

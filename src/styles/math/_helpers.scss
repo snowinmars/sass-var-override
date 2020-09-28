@@ -1,0 +1,48 @@
+@function starts-with($string, $find) {
+  $found: str-slice($string + "", 0, str-length($find));
+  @return $found == $find;
+}
+
+@function ends-with($string, $find) {
+  $found: str-slice($string + "", (str-length($string) - str-length($find) + 1));
+  @return $found == $find;
+}
+
+@function getNameFromVar($var) {
+  $name: str-slice($var, str-length('var(') + 1);
+  $name: str-slice($name, 0, str-length($name) - 1);
+
+  @return $name;
+}
+
+@function toPart($color, $part) {
+  $name: getNameFromVar($color);
+
+  @return var(#{$name} + "-" + $part);
+}
+
+@function _colormix($red1, $green1, $blue1, $alpha1,
+  $red2, $green2, $blue2, $alpha2,
+  $percent) {
+
+  $p: $percent / 100%;
+  $w: calc(2 * #{$p} - 1);
+  $a: calc(#{$alpha1} - #{$alpha2});
+  $wa: calc(#{$w} * #{$a});
+  $w1: 0;
+
+  @if ($wa == -1) { // does it works?
+    $w1: $w;
+  } @else {
+    $w1: calc((#{$w} + #{$a}) / (1 + #{$w} * #{$a}))
+  }
+
+  $w1: calc((#{$w1} + 1) / 2);
+  $w2: calc(1 - #{$w1});
+
+  $newRed: calc(#{$w1} * #{$red1} + #{$w2} * #{$red2});
+  $newGreen: calc(#{$w1} * #{$green1} + #{$w2} * #{$green2});
+  $newBlue: calc(#{$w1} * #{$blue1} + #{$w2} * #{$blue2});
+
+  @return rgb($newRed, $newGreen, $newBlue);
+}

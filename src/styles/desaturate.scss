@@ -1,0 +1,5 @@
+@use './../styles/math/desaturate' as math;
+
+@function desaturate($color, $percent) {
+  @return math.desaturateOverride($color, $percent);
+}

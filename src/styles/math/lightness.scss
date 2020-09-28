@@ -1,0 +1,9 @@
+@import './helpers';
+
+@function lightnessOverride($color) {
+  @if (not starts-with($color, 'var(--')) {
+    @return lightness($color);
+  }
+
+  @return toPart($color, "lightness");
+}
