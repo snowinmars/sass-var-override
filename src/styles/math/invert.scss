@@ -14,9 +14,6 @@
   $invertedGreen: calc(255 - #{$green});
   $invertedBlue: calc(255 - #{$blue});
 
-  @debug $red $green $blue;
-  @debug $invertedRed $invertedGreen $invertedBlue;
-
   @return _colormix($invertedRed, $invertedGreen, $invertedBlue, $alpha,
           $red, $green, $blue, $alpha,
           $percent);

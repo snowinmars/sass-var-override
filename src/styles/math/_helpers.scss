@@ -19,7 +19,7 @@
   @return _starts-with($var, 'var(--') or
           _starts-with($var, 'rgb') or 
           _starts-with($var, 'hsl') or
-          n _starts-with($var, 'calc');
+          _starts-with($var, 'calc');
 }
 
 
