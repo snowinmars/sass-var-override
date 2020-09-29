@@ -4,7 +4,7 @@
   $red, $green, $blue,
   $hue, $saturation, $lightness,
   $alpha) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     // блять, идите нахуй, какого хуя null is not a numebr?
     @if ($alpha) {
       @if ($red and $green and $blue) { @return change-color($color, $red: $red, $green: $green, $blue: $blue, $alpha: $alpha); }
@@ -42,10 +42,10 @@
   }
 
   @if ($red or $green or $blue) {
-    $oldRed:   toPart($color, "red");
-    $oldGreen: toPart($color, "green");
-    $oldBlue:  toPart($color, "blue");
-    $oldAlpha: toPart($color, "alpha");
+    $oldRed:   _toPart($color, "red");
+    $oldGreen: _toPart($color, "green");
+    $oldBlue:  _toPart($color, "blue");
+    $oldAlpha: _toPart($color, "alpha");
 
     $newRed: $oldRed;
     $newGreen: $oldGreen;
@@ -61,10 +61,10 @@
   }
 
   @if ($hue or $saturation or $lightness) {
-    $oldHue:        toPart($color, "hue");
-    $oldSaturation: toPart($color, "saturation");
-    $oldLightness:  toPart($color, "lightness");
-    $oldAlpha:      toPart($color, "alpha");
+    $oldHue:        _toPart($color, "hue");
+    $oldSaturation: _toPart($color, "saturation");
+    $oldLightness:  _toPart($color, "lightness");
+    $oldAlpha:      _toPart($color, "alpha");
 
     $newHue: $oldHue;
     $newSaturation: $oldSaturation;

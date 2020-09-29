@@ -1,9 +1,9 @@
 @import './helpers';
 
 @function redOverride($color) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return red($color);
   }
 
-  @return toPart($color, "red");
+  @return _toPart($color, "red");
 }

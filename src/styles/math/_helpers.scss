@@ -1,22 +1,30 @@
-@function starts-with($string, $find) {
+@function _starts-with($string, $find) {
   $found: str-slice($string + "", 0, str-length($find));
   @return $found == $find;
 }
 
-@function ends-with($string, $find) {
+@function _ends-with($string, $find) {
   $found: str-slice($string + "", (str-length($string) - str-length($find) + 1));
   @return $found == $find;
 }
 
-@function getNameFromVar($var) {
-  $name: str-slice($var, str-length('var(') + 1);
+@function _getNameFromVar($var) {
+  $name: str-slice($var + "", str-length('var(') + 1);
   $name: str-slice($name, 0, str-length($name) - 1);
 
   @return $name;
 }
 
-@function toPart($color, $part) {
-  $name: getNameFromVar($color);
+@function _isCssVar($var) {
+  @return _starts-with($var, 'var(--') or
+          _starts-with($var, 'rgb') or 
+          _starts-with($var, 'hsl') or
+          n _starts-with($var, 'calc');
+}
+
+
+@function _toPart($color, $part) {
+  $name: _getNameFromVar($color);
 
   @return var(#{$name} + "-" + $part);
 }

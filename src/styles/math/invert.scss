@@ -1,14 +1,14 @@
 @import './helpers';
 
 @function invertOverride($color, $percent) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return invert($color, $percent);
   }
 
-  $red:   toPart($color, "red");
-  $green: toPart($color, "green");
-  $blue:  toPart($color, "blue");
-  $alpha: toPart($color, "alpha");
+  $red:   _toPart($color, "red");
+  $green: _toPart($color, "green");
+  $blue:  _toPart($color, "blue");
+  $alpha: _toPart($color, "alpha");
 
   $invertedRed: calc(255 - #{$red});
   $invertedGreen: calc(255 - #{$green});

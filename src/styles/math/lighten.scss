@@ -1,13 +1,13 @@
 @import './helpers';
 
 @function lightenOverride($color, $percent) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return lighten($color, $percent);
   }
 
-  $hue:        toPart($color, "hue");
-  $saturation: toPart($color, "saturation");
-  $lightness:  toPart($color, "lightness");
+  $hue:        _toPart($color, "hue");
+  $saturation: _toPart($color, "saturation");
+  $lightness:  _toPart($color, "lightness");
 
   $newHue: $hue;
   $newSaturation: $saturation;

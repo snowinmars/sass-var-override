@@ -1,14 +1,14 @@
 @import './helpers';
 
 @function transparentizeOverride($color, $amount) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return transparentize($color, $amount);
   }
 
-  $red:   toPart($color, "red");
-  $green: toPart($color, "green");
-  $blue:  toPart($color, "blue");
-  $alpha: toPart($color, "alpha");
+  $red:   _toPart($color, "red");
+  $green: _toPart($color, "green");
+  $blue:  _toPart($color, "blue");
+  $alpha: _toPart($color, "alpha");
 
   $newAlpha: calc(#{$alpha} - #{$amount});
 

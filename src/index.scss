@@ -13,3 +13,7 @@ code {
 }
 
 @import './colorSchema'; // inject css vars to :root
+
+// override boostrap vars here
+
+@import "~bootstrap/scss/bootstrap";

@@ -4,8 +4,14 @@
   margin: 0;
 }
 
-tbody {
-  td:nth-child(even) {
-    border-left: 2em solid transparent;
+.table {
+  tbody {
+    tr {
+      td:first-child {
+        background-color: white;
+      }
+    }
+    
+    background-image: url('https://media.istockphoto.com/vectors/transparent-background-seamless-pattern-vector-vector-id875273764');
   }
-} 
+}

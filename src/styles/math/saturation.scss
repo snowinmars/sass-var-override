@@ -1,9 +1,9 @@
 @import './helpers';
 
 @function saturationOverride($color) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return saturation($color);
   }
 
-  @return toPart($color, "saturation");
+  @return _toPart($color, "saturation");
 }

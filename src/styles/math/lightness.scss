@@ -1,9 +1,9 @@
 @import './helpers';
 
 @function lightnessOverride($color) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return lightness($color);
   }
 
-  @return toPart($color, "lightness");
+  @return _toPart($color, "lightness");
 }

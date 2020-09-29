@@ -1,13 +1,13 @@
 @import './helpers';
 
 @function saturateOverride($color, $amount) {
-  @if (not starts-with($color, 'var(--')) {
+  @if (not _isCssVar($color)) {
     @return saturate($color, $amount);
   }
 
-  $hue: toPart($color, "hue");
-  $saturation: toPart($color, "saturation");
-  $lightness: toPart($color, "lightness");
+  $hue: _toPart($color, "hue");
+  $saturation: _toPart($color, "saturation");
+  $lightness: _toPart($color, "lightness");
 
   $newSaturation: calc(#{$saturation} + #{$amount});
 

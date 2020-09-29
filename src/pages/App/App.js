@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.scss';
 
+import Table from "react-bootstrap/Table";
+
 import Darken from '../../components/Darken/Darken';
 import Mix from '../../components/Mix/Mix';
 import Rgba from '../../components/Rgba/Rgba';
@@ -20,17 +22,16 @@ import Transparentize from "../../components/Transparentize/Transparentize";
 class App extends React.Component {
     render() {
         return (
-            <table>
+            <Table size="sm">
                 <thead>
                 <tr>
-                    <td>Function name</td>
+                    <td rowSpan={2}>Function name</td>
                     <td colSpan={2}>Group 1</td>
                     <td colSpan={2}>Group 2</td>
                     <td colSpan={2}>Group 3</td>
                     <td colSpan={2}>Group 4</td>
                 </tr>
                 <tr>
-                    <td> </td>
                     <td>Scss</td>
                     <td>Overrided</td>
                     <td>Scss</td>
@@ -56,7 +57,7 @@ class App extends React.Component {
                     <Scale/>
                     <Transparentize/>
                 </tbody>
-            </table>
+            </Table>
         );
     }
 }
